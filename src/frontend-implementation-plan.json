@@ -1,0 +1,299 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "KindKart UI refresh: necessity item terminology, NGO nav fixes, user delivery section, testimonials, seller ratings, donation budget, and checkout donate/anonymity + payment details",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "summary": "Retitle marketplace UI language from “Products” to “Necessity Items” while keeping all existing routes unchanged.",
+      "acceptanceCriteria": [
+        "User-facing text in marketplace/browse/product-related pages uses 'Necessity Items' instead of 'Products' (where semantically applicable).",
+        "No routes break; existing navigation continues to work."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/user/MarketplacePage.tsx",
+          "operation": "modify",
+          "description": "Update headings, search placeholder, and any marketplace copy to use “Necessity Items” instead of “Products” without changing navigation behavior. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/user/ProductDetailPage.tsx",
+          "operation": "modify",
+          "description": "Update product detail user-facing copy (including not-found messaging and CTAs where applicable) to use “Necessity Item(s)” terminology while keeping the same /user/product/$productId route. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/public/BrowseProductsPublicPage.tsx",
+          "operation": "modify",
+          "description": "Update public browsing page text (title, search placeholder, CTA) from “Products” to “Necessity Items”, keeping route /browse intact. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/public/LandingPage.tsx",
+          "operation": "modify",
+          "description": "Update landing page CTA/button label(s) such as “Browse Products” to “Browse Necessity Items” while preserving links and routes. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/AuthenticatedNavbar.tsx",
+          "operation": "modify",
+          "description": "Update global search placeholder text to refer to “Necessity Items” rather than “products” while preserving search routing to /user/marketplace. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/UserNavbar.tsx",
+          "operation": "modify",
+          "description": "Update user navigation labels where semantically applicable (e.g., “Sell Product” -> “List Necessity Item”) without changing any paths. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Fix NGO navbar links so “Post Requirements” and “Delivery Tracking” navigate to existing routes instead of Not Found.",
+      "acceptanceCriteria": [
+        "NGO navbar 'Post Requirements' links to /ngo/requirements/post (not /ngo/requirements).",
+        "NGO navbar 'Delivery Tracking' links to /ngo/deliveries (not /ngo/tracking).",
+        "Navigating via NGO navbar no longer results in a Not Found state for these destinations."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/layout/NGONavbar.tsx",
+          "operation": "modify",
+          "description": "Update NGONavbar navItems paths to /ngo/requirements/post and /ngo/deliveries to match the router configuration. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Add an end-user Delivery section that lists deliveries with statuses and links into the existing trackingId-based tracking details route.",
+      "acceptanceCriteria": [
+        "A user-accessible page/section lists the user’s deliveries with clear statuses (e.g., scheduled, picked-up, in-transit, delivered) using seeded/dummy data.",
+        "Each listed delivery provides a working link/button to open the existing tracking details route (/tracking/$trackingId)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/user/UserDeliveriesPage.tsx",
+          "operation": "create",
+          "description": "Create a user deliveries page that reads seeded/dummy deliveries from DeliveriesContext, renders delivery cards with clear status badges, and links each item to /tracking/$trackingId using the delivery’s id as trackingId. Use shadcn/ui Card/Badge/Button for consistent UI. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register a new authenticated user route for the deliveries page (e.g., /user/deliveries) and wire it into the route tree so it is navigable. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/UserNavbar.tsx",
+          "operation": "modify",
+          "description": "Add a “Deliveries” navigation item pointing to the new /user/deliveries route to ensure the page is reachable. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Add a prominent public testimonials section with at least 4 dummy testimonials including star ratings.",
+      "acceptanceCriteria": [
+        "A testimonials UI section is visible on the public site and contains at least 4 dummy testimonials.",
+        "Each testimonial shows a name and a short quote; ratings are visually represented (e.g., stars)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/public/TestimonialsSection.tsx",
+          "operation": "create",
+          "description": "Create a TestimonialsSection component rendering at least 4 dummy testimonials (name, role/type, quote, numeric rating) and visually represent ratings with star icons (e.g., lucide-react Star). Use shadcn/ui Card for layout consistency. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/public/LandingPage.tsx",
+          "operation": "modify",
+          "description": "Place the new TestimonialsSection in a prominent location on the landing page (e.g., after Features and before CTA) to ensure it is visible on the public site. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Show consistent seller authenticity star ratings and review summaries on both marketplace listings and item detail views using dummy data.",
+      "acceptanceCriteria": [
+        "Marketplace list cards show a seller rating (stars) and a review count (dummy values).",
+        "Product detail page shows seller rating (stars) and a short review summary/list (dummy values).",
+        "Ratings display is consistent across marketplace and product detail."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/marketplace/SellerRating.tsx",
+          "operation": "create",
+          "description": "Create a reusable SellerRating component that displays a star rating UI and review count, backed by deterministic dummy data derived from seller/product identifiers. Use shadcn/ui + lucide-react for consistent presentation. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/marketplace/SellerReviewSummary.tsx",
+          "operation": "create",
+          "description": "Create a small reusable SellerReviewSummary component that shows a short dummy review list/summary for the seller, formatted consistently with SellerRating. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/user/MarketplacePage.tsx",
+          "operation": "modify",
+          "description": "Render SellerRating on each necessity item card wherever seller info is implied/shown, displaying stars + review count with dummy values. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/user/ProductDetailPage.tsx",
+          "operation": "modify",
+          "description": "Render SellerRating and SellerReviewSummary in the seller info area so the detail view shows consistent stars, review count, and a short dummy review summary/list. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Ensure the item detail view always shows a clear description section with a graceful fallback when missing.",
+      "acceptanceCriteria": [
+        "Product detail page includes a labeled description area that renders non-empty text for all seeded items (use fallback text if needed).",
+        "No product detail page appears without a description block."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/user/ProductDetailPage.tsx",
+          "operation": "modify",
+          "description": "Add a labeled “Description” section (e.g., Card/section) and ensure it always renders non-empty text by applying a sensible fallback when product.description is missing/blank. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "summary": "Add a donor budgeting UI that lets donors set a budget and shows recommended necessity items client-side (UI-only).",
+      "acceptanceCriteria": [
+        "There is an input/control for budget amount (currency consistent with the app) in an appropriate donation flow page.",
+        "Recommended items list updates client-side based on the entered budget (e.g., filters/sorts dummy recommended items that fit within budget).",
+        "No backend calls are required for generating recommendations."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/donations/DonationBudgetPlanner.tsx",
+          "operation": "create",
+          "description": "Create a DonationBudgetPlanner UI component with a budget input (₹) that filters/sorts a dummy recommended necessity items list client-side (e.g., using products from KindKartDataContext) to show items within budget. Use shadcn/ui Input/Card/Badge for consistent styling. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/user/DonateNeedBoardPage.tsx",
+          "operation": "modify",
+          "description": "Embed DonationBudgetPlanner into the donation flow (e.g., above the NGO grid) so donors can set a budget and immediately see recommended necessity items without any backend calls. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "summary": "Update marketplace purchase initiation so users choose “Buy for yourself” vs “Donate”, and if donating must choose anonymity vs show name before continuing.",
+      "acceptanceCriteria": [
+        "Clicking 'Buy Now' (or equivalent) opens a choice between 'Buy for yourself' and 'Donate'.",
+        "If 'Donate' is chosen, the UI requires selecting either anonymous donation or showing donor name before continuing.",
+        "The selection is reflected in the UI summary/confirmation step (e.g., 'Donor: Anonymous' vs 'Donor: <Name>')."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/checkout/CheckoutIntentDialog.tsx",
+          "operation": "create",
+          "description": "Create a CheckoutIntentDialog component that opens from the product detail CTA and enforces a two-step choice: (1) intent: buy vs donate; (2) if donate, require anonymity selection (anonymous vs show my name) before proceeding. Use shadcn/ui Dialog + form controls for a consistent flow. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/user/ProductDetailPage.tsx",
+          "operation": "modify",
+          "description": "Replace the current direct-action buttons with a single “Buy / Donate” (or equivalent) that opens CheckoutIntentDialog; ensure the dialog prevents continuing until required selections are made and shows a confirmation summary including donor identity selection. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "summary": "Show coherent dummy payment details (breakdown + payer/donor details) during both buying and donating flows, reflecting anonymity when applicable.",
+      "acceptanceCriteria": [
+        "Donation flow shows a payment details panel/section before confirming submission (amount breakdown + donor info).",
+        "Marketplace purchase/donate flow shows a payment details panel/section before confirming (cost breakdown + recipient/delivery notes as dummy text if needed).",
+        "All values can be dummy but must be coherent and non-empty."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/checkout/PaymentDetailsPanel.tsx",
+          "operation": "create",
+          "description": "Create a reusable PaymentDetailsPanel component that shows a coherent dummy breakdown (item/donation amount, dummy fees, total) and payer/donor details (including anonymity state). Use shadcn/ui Card/Separator/Badge for readability. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/user/DonatePaymentPage.tsx",
+          "operation": "modify",
+          "description": "Add a payment details section before the final “Complete Donation” action using PaymentDetailsPanel, showing amount breakdown and donor info (respecting the anonymous toggle). Keep payment UI-only with coherent dummy fees/totals. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/checkout/CheckoutIntentDialog.tsx",
+          "operation": "modify",
+          "description": "Integrate PaymentDetailsPanel into the marketplace buy/donate dialog confirmation step to show cost breakdown plus dummy recipient/delivery notes and donor anonymity selection when applicable. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "summary": "Populate dashboards/analytics and delivery-related UIs with realistic dummy data so views don’t appear empty, including map-like visuals with dummy markers/details (no external map integration).",
+      "acceptanceCriteria": [
+        "Dashboards/analytics pages across roles (User/NGO/Delivery/Admin) render non-empty dummy datasets (lists and chart values).",
+        "Any map UI shown in delivery-related pages uses dummy route/markers and accompanying details (no external map integration required).",
+        "No primary page presents an empty state unless it is explicitly a 'no data' scenario with explanatory copy."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ngo/ImpactAnalyticsPage.tsx",
+          "operation": "modify",
+          "description": "Replace zero/empty KPI placeholders with realistic dummy totals and add at least one additional non-empty visualization (e.g., simple bar list by month/program) so the page no longer appears empty. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ngo/NGODeliveryTrackingPage.tsx",
+          "operation": "modify",
+          "description": "Populate NGO delivery tracking with a non-empty dummy deliveries list (and status badges) instead of “No active deliveries”, and include brief dummy route/ETA details to avoid placeholder-only UI. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/admin/ReportsAnalyticsPage.tsx",
+          "operation": "modify",
+          "description": "Ensure charts remain non-empty and adjust any hardcoded chart styling to match the refreshed warm palette (avoid blue/purple-centric colors) while keeping dummy datasets coherent. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/user/UserDeliveriesPage.tsx",
+          "operation": "modify",
+          "description": "Include non-empty dummy route/stop details per delivery (textual markers like pickup/drop labels and ETA) and optionally a small static preview using existing patterns (no external maps) to satisfy delivery-related dummy map/marker guidance. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "summary": "Apply a cohesive warm/neutral visual theme refresh across updated sections with consistent typography/spacing and avoid blue/purple-centric styling; ensure all UI text is English.",
+      "acceptanceCriteria": [
+        "New/updated UI sections share consistent component styling (cards, badges, headings, spacing).",
+        "Theme uses a warm/neutral palette (e.g., earth tones) and does not default to a blue/purple-centric look.",
+        "All user-facing text is in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update CSS theme tokens (e.g., --primary/--ring and related chart tokens) from purple/blue hues to a warm, trustworthy earth-tone palette; keep contrast accessible for both light and dark modes. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/public/LandingPage.tsx",
+          "operation": "modify",
+          "description": "Align newly added testimonials section and existing landing sections to the refreshed warm theme using consistent spacing, headings, and card styling (no blue/purple-centric visuals). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/user/MarketplacePage.tsx",
+          "operation": "modify",
+          "description": "Adjust marketplace cards/badges/typography to match the refreshed warm theme (consistent spacing and readable hierarchy) while keeping routes intact. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/user/ProductDetailPage.tsx",
+          "operation": "modify",
+          "description": "Ensure description block, seller rating UI, and checkout/payment panels follow consistent card/badge styling and warm palette. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/user/DonateNeedBoardPage.tsx",
+          "operation": "modify",
+          "description": "Ensure donation budget planner and donation-related cards use consistent warm theme styling (cards, badges, headings). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/user/DonatePaymentPage.tsx",
+          "operation": "modify",
+          "description": "Ensure payment details panel and donor info display match the warm theme and consistent layout conventions. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/admin/ReportsAnalyticsPage.tsx",
+          "operation": "modify",
+          "description": "Replace any blue/purple chart bar classes with warm/neutral alternatives (e.g., amber/emerald/orange) to match the refreshed palette while preserving dummy data integrity. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

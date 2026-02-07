@@ -1,2 +1,3 @@
-# kindkart
-Exported from Caffeine project: Marketplace necessities terminology, delivery status section, testimonials, seller ratings, donation budget UI, and checkout donate/anonymity flow + NGO 404 fixes
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

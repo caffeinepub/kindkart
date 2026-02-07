@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Marketplace/NGO web app with necessity items, delivery tracking, testimonials/reviews, product details, donation budgeting UI, purchase vs donate flow (including anonymity), dummy analytics data, and fixes for NGO requirements page 404 and payment details display.",
+  "architectural_notes": [],
+  "known_issues": [
+    "NGO section links for requirements/deliveries currently return 'Not Found' when clicked (routing/page missing)."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-rename-retitle-marketplace-language-across-the-ui-from-generic-products-to-necessity-items-including-headings-buttons-empty-states-and-navigation-labels-while-keeping-existing-routes-intact",
+      "title": "Rename/retitle marketplace language across the UI from generic 'Products' to 'Necessity Items' (including headings, buttons, empty states, and navigation labels) while keeping existing routes intact.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-ngo-section-navigation-so-clicking-post-requirements-and-delivery-tracking-does-not-show-not-found-by-updating-ngo-navbar-links-to-match-existing-routes-in-the-router",
+      "title": "Fix NGO section navigation so clicking 'Post Requirements' and 'Delivery Tracking' does not show 'Not Found' by updating NGO navbar links to match existing routes in the router.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-delivery-section-for-end-users-that-shows-delivery-status-and-allows-navigating-to-a-detailed-tracking-view-using-an-existing-trackingid-based-route",
+      "title": "Add a 'Delivery' section for end users that shows delivery status and allows navigating to a detailed tracking view using an existing trackingId-based route.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-testimonials-section-to-the-public-website-with-multiple-dummy-testimonials-name-role-type-short-quote-and-a-rating-and-render-it-in-a-prominent-public-location-e-g-landing-page",
+      "title": "Add a testimonials section to the public website with multiple dummy testimonials (name, role/type, short quote, and a rating) and render it in a prominent public location (e.g., Landing page).",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-seller-authenticity-star-ratings-and-review-summaries-to-marketplace-listings-and-product-detail-views-using-dummy-data-and-ensure-the-ratings-are-consistently-displayed-wherever-seller-info-is-shown",
+      "title": "Add seller authenticity star ratings and review summaries to marketplace listings and product detail views using dummy data, and ensure the ratings are consistently displayed wherever seller info is shown.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-that-opening-a-marketplace-item-shows-a-clear-readable-description-section-on-the-product-detail-page-and-handle-missing-descriptions-gracefully-with-a-sensible-dummy-fallback",
+      "title": "Ensure that opening a marketplace item shows a clear, readable description section on the product detail page (and handle missing descriptions gracefully with a sensible dummy fallback).",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-donation-budgeting-ui-for-donors-allow-the-donor-to-set-a-budget-and-based-on-that-budget-show-recommended-donation-necessity-items-ui-only-no-backend-logic-required",
+      "title": "Add a donation budgeting UI for donors: allow the donor to set a budget, and based on that budget show recommended donation necessity items (UI only; no backend logic required).",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-marketplace-item-checkout-flow-so-that-when-a-user-initiates-purchase-from-a-product-detail-page-the-ui-offers-1-buy-for-yourself-or-2-donate-if-donate-is-selected-prompt-for-donate-anonymously-vs-show-my-name",
+      "title": "Update the marketplace item checkout flow so that when a user initiates purchase from a product detail page, the UI offers: (1) Buy for yourself, or (2) Donate; if Donate is selected, prompt for 'Donate anonymously' vs 'Show my name'.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-show-payment-details-during-both-buying-and-donating-flows-including-a-clear-cost-breakdown-item-price-donation-amount-fees-if-any-as-dummy-values-total-and-payer-donor-details-including-anonymity-selection-when-applicable",
+      "title": "Show payment details during both buying and donating flows, including a clear cost breakdown (item price/donation amount, fees if any as dummy values, total), and payer/donor details (including anonymity selection when applicable).",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-populate-all-relevant-pages-sections-with-realistic-dummy-data-maps-charts-analytics-tables-and-lists-so-that-dashboards-and-analytics-views-do-not-appear-empty-or-placeholder-only",
+      "title": "Populate all relevant pages/sections with realistic dummy data (maps, charts, analytics, tables, and lists) so that dashboards and analytics views do not appear empty or placeholder-only.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-cohesive-visual-theme-refresh-across-newly-added-modified-sections-testimonials-ratings-delivery-status-checkout-payment-panels-donation-budget-ui-with-consistent-typography-spacing-and-a-warm-trustworthy-palette-avoid-blue-purple",
+      "title": "Apply a cohesive visual theme refresh across newly added/modified sections (testimonials, ratings, delivery status, checkout/payment panels, donation budget UI) with consistent typography, spacing, and a warm, trustworthy palette (avoid blue/purple).",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Rename/convert products to 'necessity items' across the marketplace UI/content.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add a Delivery section that shows delivery status/tracking.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add website testimonials section.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Add seller authenticity star ratings/reviews.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Show item description when opening/viewing a product detail page.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Donation budgeting UI: donor sets a budget and UI shows recommended donation items (UI only).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Checkout flow: when buying a marketplace item, let user choose 'buy for yourself' vs 'donate'; if donate, ask anonymous vs show name.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Populate all sections with dummy data (maps, charts, analytics).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "NGO section: post requirements and deliveries; fix 'Not Found' error when clicked (routing/page).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Show payment details during buying/donating flow (payment details UI).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Marketplace necessities terminology, delivery status section, testimonials, seller ratings, donation budget UI, and checkout donate/anonymity flow + NGO 404 fixes",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

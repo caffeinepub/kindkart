@@ -1,0 +1,52 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T16:10:01.896Z",
+  "summary": "Most BuildRequest items appear implemented: NGO navbar route fixes, user deliveries page linking to /tracking/$trackingId, testimonials section on landing page, seller rating + reviews, product description fallback, donation budget planner, checkout buy-vs-donate + anonymity flow, payment details panel, and a warm/neutral theme token update. One requirement (REQ-18) cannot be fully verified from the provided diff summary, especially regarding non-empty dummy datasets across *all* role dashboards and delivery map-related dummy data.",
+  "missing_requirements": [
+    {
+      "id": "REQ-18",
+      "requirement": "Populate all relevant pages/sections with realistic dummy data (maps, charts, analytics, tables, and lists) so dashboards and analytics views do not appear empty or placeholder-only, including dummy route/markers for any delivery map UI.",
+      "reason": "The diff summary shows dummy analytics for Admin and NGO pages, but does not provide evidence that dashboards/analytics pages across all roles (User/Delivery/Admin/NGO) are populated, nor that any delivery map UI (if present) uses dummy routes/markers. The relevant delivery map page(s) are not shown in the diff summary.",
+      "evidence": [
+        "frontend/src/pages/admin/ReportsAnalyticsPage.tsx",
+        "frontend/src/pages/ngo/ImpactAnalyticsPage.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "AI-powered selling flow utilities and simulated AI features (category detection/price estimation/description generation) appear to be added/expanded beyond the requested scope.",
+      "reason": "The BuildRequest focuses on terminology, delivery section, testimonials, ratings, donation budget UI, checkout donate/anonymity + payment panels, dummy data fill, and NGO 404 fixes. The diff summary includes a simulated AI utility and a complete AI-driven sell-product flow which are not mentioned in REQ-9–REQ-19.",
+      "evidence": [
+        "frontend-file-summaries.txt (mentions frontend/src/utils/simulatedAi.ts and AI-powered SellProductPage flow)"
+      ]
+    }
+  ],
+  "confidence": 0.62,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/App.tsx",
+    "frontend/src/components/checkout/CheckoutIntentDialog.tsx",
+    "frontend/src/components/checkout/PaymentDetailsPanel.tsx",
+    "frontend/src/components/donations/DonationBudgetPlanner.tsx",
+    "frontend/src/components/layout/AuthenticatedNavbar.tsx",
+    "frontend/src/components/layout/NGONavbar.tsx",
+    "frontend/src/components/layout/UserNavbar.tsx",
+    "frontend/src/components/marketplace/SellerRating.tsx",
+    "frontend/src/components/marketplace/SellerReviewSummary.tsx",
+    "frontend/src/components/public/TestimonialsSection.tsx",
+    "frontend/src/index.css",
+    "frontend/src/pages/admin/ReportsAnalyticsPage.tsx",
+    "frontend/src/pages/ngo/ImpactAnalyticsPage.tsx",
+    "frontend/src/pages/ngo/NGODeliveryTrackingPage.tsx",
+    "frontend/src/pages/public/BrowseProductsPublicPage.tsx",
+    "frontend/src/pages/public/LandingPage.tsx",
+    "frontend/src/pages/user/DonateNeedBoardPage.tsx",
+    "frontend/src/pages/user/DonatePaymentPage.tsx",
+    "frontend/src/pages/user/MarketplacePage.tsx",
+    "frontend/src/pages/user/ProductDetailPage.tsx",
+    "frontend/src/pages/user/UserDeliveriesPage.tsx",
+    "project_state.json"
+  ]
+}

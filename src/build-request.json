@@ -1,0 +1,217 @@
+{
+  "kind": "build_request",
+  "title": "Marketplace necessities terminology, delivery status section, testimonials, seller ratings, donation budget UI, and checkout donate/anonymity flow + NGO 404 fixes",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "text": "Rename/retitle marketplace language across the UI from generic 'Products' to 'Necessity Items' (including headings, buttons, empty states, and navigation labels) while keeping existing routes intact.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "1change products to necessity items"
+        ]
+      },
+      "acceptanceCriteria": [
+        "User-facing text in marketplace/browse/product-related pages uses 'Necessity Items' instead of 'Products' (where semantically applicable).",
+        "No routes break; existing navigation continues to work."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Fix NGO section navigation so clicking 'Post Requirements' and 'Delivery Tracking' does not show 'Not Found' by updating NGO navbar links to match existing routes in the router.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "in ngo section post requirements and delivers whenc clicked not found is coming correct that too"
+        ]
+      },
+      "acceptanceCriteria": [
+        "NGO navbar 'Post Requirements' links to /ngo/requirements/post (not /ngo/requirements).",
+        "NGO navbar 'Delivery Tracking' links to /ngo/deliveries (not /ngo/tracking).",
+        "Navigating via NGO navbar no longer results in a Not Found state for these destinations."
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Add a 'Delivery' section for end users that shows delivery status and allows navigating to a detailed tracking view using an existing trackingId-based route.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "2 delivery section which shows delivery status"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A user-accessible page/section lists the user’s deliveries with clear statuses (e.g., scheduled, picked-up, in-transit, delivered) using seeded/dummy data.",
+        "Each listed delivery provides a working link/button to open the existing tracking details route (/tracking/$trackingId)."
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Add a testimonials section to the public website with multiple dummy testimonials (name, role/type, short quote, and a rating) and render it in a prominent public location (e.g., Landing page).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "3 testimonial of website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A testimonials UI section is visible on the public site and contains at least 4 dummy testimonials.",
+        "Each testimonial shows a name and a short quote; ratings are visually represented (e.g., stars)."
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Add seller authenticity star ratings and review summaries to marketplace listings and product detail views using dummy data, and ensure the ratings are consistently displayed wherever seller info is shown.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "4 authenticity stars reviews of sellers"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Marketplace list cards show a seller rating (stars) and a review count (dummy values).",
+        "Product detail page shows seller rating (stars) and a short review summary/list (dummy values).",
+        "Ratings display is consistent across marketplace and product detail."
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Ensure that opening a marketplace item shows a clear, readable description section on the product detail page (and handle missing descriptions gracefully with a sensible dummy fallback).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "5 when open products show description"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Product detail page includes a labeled description area that renders non-empty text for all seeded items (use fallback text if needed).",
+        "No product detail page appears without a description block."
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "text": "Add a donation budgeting UI for donors: allow the donor to set a budget, and based on that budget show recommended donation necessity items (UI only; no backend logic required).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "6 Donator set a budge and based on that it shows recommended donation products just ui"
+        ]
+      },
+      "acceptanceCriteria": [
+        "There is an input/control for budget amount (currency consistent with the app) in an appropriate donation flow page.",
+        "Recommended items list updates client-side based on the entered budget (e.g., filters/sorts dummy recommended items that fit within budget).",
+        "No backend calls are required for generating recommendations."
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "text": "Update the marketplace item checkout flow so that when a user initiates purchase from a product detail page, the UI offers: (1) Buy for yourself, or (2) Donate; if Donate is selected, prompt for 'Donate anonymously' vs 'Show my name'.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "7 when user buys product listed from items in marketplace give option buying for yourself or donating and when clicked on donating ask either anonymously or show your name."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking 'Buy Now' (or equivalent) opens a choice between 'Buy for yourself' and 'Donate'.",
+        "If 'Donate' is chosen, the UI requires selecting either anonymous donation or showing donor name before continuing.",
+        "The selection is reflected in the UI summary/confirmation step (e.g., 'Donor: Anonymous' vs 'Donor: <Name>')."
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "text": "Show payment details during both buying and donating flows, including a clear cost breakdown (item price/donation amount, fees if any as dummy values, total), and payer/donor details (including anonymity selection when applicable).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "also when buying or donating show payemnt details etc too"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Donation flow shows a payment details panel/section before confirming submission (amount breakdown + donor info).",
+        "Marketplace purchase/donate flow shows a payment details panel/section before confirming (cost breakdown + recipient/delivery notes as dummy text if needed).",
+        "All values can be dummy but must be coherent and non-empty."
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "text": "Populate all relevant pages/sections with realistic dummy data (maps, charts, analytics, tables, and lists) so that dashboards and analytics views do not appear empty or placeholder-only.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "8 pls fill every section with dummy data maps etc charts for analytics pls"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Dashboards/analytics pages across roles (User/NGO/Delivery/Admin) render non-empty dummy datasets (lists and chart values).",
+        "Any map UI shown in delivery-related pages uses dummy route/markers and accompanying details (no external map integration required).",
+        "No primary page presents an empty state unless it is explicitly a 'no data' scenario with explanatory copy."
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "text": "Apply a cohesive visual theme refresh across newly added/modified sections (testimonials, ratings, delivery status, checkout/payment panels, donation budget UI) with consistent typography, spacing, and a warm, trustworthy palette (avoid blue/purple).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-10"
+        ],
+        "quotes": [
+          "yes pls work fast"
+        ]
+      },
+      "acceptanceCriteria": [
+        "New/updated UI sections share consistent component styling (cards, badges, headings, spacing).",
+        "Theme uses a warm/neutral palette (e.g., earth tones) and does not default to a blue/purple-centric look.",
+        "All user-facing text is in English."
+      ]
+    }
+  ],
+  "constraints": [
+    "Frontend files in immutablePaths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui (compose only).",
+    "Keep backend as a single Motoko actor; only introduce a migration file if persistent state schema changes are required.",
+    "No third-party auth providers; Internet Identity only (already in project).",
+    "No external databases or real payment integrations; payment details are UI/dummy data only."
+  ],
+  "nonGoals": [
+    "Implement real payment processing or payment gateway integration.",
+    "Implement real seller verification or authenticity checks; ratings/reviews are dummy/UI-only unless existing local state already supports more.",
+    "Add real-time delivery updates via websockets/push notifications.",
+    "Replace TanStack Router with a different routing solution."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

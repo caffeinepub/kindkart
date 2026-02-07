@@ -1,0 +1,215 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T16:10:01.901Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 11,
+    "implemented": 11,
+    "items": [
+      {
+        "id": "REQ-10",
+        "summary": "Fix NGO section navigation so clicking 'Post Requirements' and 'Delivery Tracking' does not show 'Not Found' by updating NGO navbar links to match existing routes in the router.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/layout/NGONavbar.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/layout/NGONavbar.tsx"
+        ]
+      },
+      {
+        "id": "REQ-11",
+        "summary": "Add a 'Delivery' section for end users that shows delivery status and allows navigating to a detailed tracking view using an existing trackingId-based route.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/user/UserDeliveriesPage.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/components/layout/UserNavbar.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/user/UserDeliveriesPage.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/components/layout/UserNavbar.tsx"
+        ]
+      },
+      {
+        "id": "REQ-12",
+        "summary": "Add a testimonials section to the public website with multiple dummy testimonials (name, role/type, short quote, and a rating) and render it in a prominent public location (e.g., Landing page).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/public/TestimonialsSection.tsx",
+          "frontend/src/pages/public/LandingPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/public/TestimonialsSection.tsx",
+          "frontend/src/pages/public/LandingPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-13",
+        "summary": "Add seller authenticity star ratings and review summaries to marketplace listings and product detail views using dummy data, and ensure the ratings are consistently displayed wherever seller info is shown.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/marketplace/SellerRating.tsx",
+          "frontend/src/components/marketplace/SellerReviewSummary.tsx",
+          "frontend/src/pages/user/MarketplacePage.tsx",
+          "frontend/src/pages/user/ProductDetailPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/marketplace/SellerRating.tsx",
+          "frontend/src/components/marketplace/SellerReviewSummary.tsx",
+          "frontend/src/pages/user/MarketplacePage.tsx",
+          "frontend/src/pages/user/ProductDetailPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-14",
+        "summary": "Ensure that opening a marketplace item shows a clear, readable description section on the product detail page (and handle missing descriptions gracefully with a sensible dummy fallback).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/user/ProductDetailPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/user/ProductDetailPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-15",
+        "summary": "Add a donation budgeting UI for donors: allow the donor to set a budget, and based on that budget show recommended donation necessity items (UI only; no backend logic required).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/donations/DonationBudgetPlanner.tsx",
+          "frontend/src/pages/user/DonateNeedBoardPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/donations/DonationBudgetPlanner.tsx",
+          "frontend/src/pages/user/DonateNeedBoardPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-16",
+        "summary": "Update the marketplace item checkout flow so that when a user initiates purchase from a product detail page, the UI offers: (1) Buy for yourself, or (2) Donate; if Donate is selected, prompt for 'Donate anonymously' vs 'Show my name'.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/checkout/CheckoutIntentDialog.tsx",
+          "frontend/src/pages/user/ProductDetailPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/checkout/CheckoutIntentDialog.tsx",
+          "frontend/src/pages/user/ProductDetailPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-17",
+        "summary": "Show payment details during both buying and donating flows, including a clear cost breakdown (item price/donation amount, fees if any as dummy values, total), and payer/donor details (including anonymity selection when applicable).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/checkout/PaymentDetailsPanel.tsx",
+          "frontend/src/pages/user/DonatePaymentPage.tsx",
+          "frontend/src/components/checkout/CheckoutIntentDialog.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/checkout/PaymentDetailsPanel.tsx",
+          "frontend/src/pages/user/DonatePaymentPage.tsx",
+          "frontend/src/components/checkout/CheckoutIntentDialog.tsx"
+        ]
+      },
+      {
+        "id": "REQ-18",
+        "summary": "Populate all relevant pages/sections with realistic dummy data (maps, charts, analytics, tables, and lists) so that dashboards and analytics views do not appear empty or placeholder-only.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/ngo/ImpactAnalyticsPage.tsx",
+          "frontend/src/pages/ngo/NGODeliveryTrackingPage.tsx",
+          "frontend/src/pages/admin/ReportsAnalyticsPage.tsx",
+          "frontend/src/pages/user/UserDeliveriesPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/ngo/ImpactAnalyticsPage.tsx",
+          "frontend/src/pages/ngo/NGODeliveryTrackingPage.tsx",
+          "frontend/src/pages/admin/ReportsAnalyticsPage.tsx",
+          "frontend/src/pages/user/UserDeliveriesPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-19",
+        "summary": "Apply a cohesive visual theme refresh across newly added/modified sections (testimonials, ratings, delivery status, checkout/payment panels, donation budget UI) with consistent typography, spacing, and a warm, trustworthy palette (avoid blue/purple).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/src/pages/public/LandingPage.tsx",
+          "frontend/src/pages/user/MarketplacePage.tsx",
+          "frontend/src/pages/user/ProductDetailPage.tsx",
+          "frontend/src/pages/user/DonateNeedBoardPage.tsx",
+          "frontend/src/pages/user/DonatePaymentPage.tsx",
+          "frontend/src/pages/admin/ReportsAnalyticsPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/src/pages/public/LandingPage.tsx",
+          "frontend/src/pages/user/MarketplacePage.tsx",
+          "frontend/src/pages/user/ProductDetailPage.tsx",
+          "frontend/src/pages/user/DonateNeedBoardPage.tsx",
+          "frontend/src/pages/user/DonatePaymentPage.tsx",
+          "frontend/src/pages/admin/ReportsAnalyticsPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Rename/retitle marketplace language across the UI from generic 'Products' to 'Necessity Items' (including headings, buttons, empty states, and navigation labels) while keeping existing routes intact.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/user/MarketplacePage.tsx",
+          "frontend/src/pages/user/ProductDetailPage.tsx",
+          "frontend/src/pages/public/BrowseProductsPublicPage.tsx",
+          "frontend/src/pages/public/LandingPage.tsx",
+          "frontend/src/components/layout/AuthenticatedNavbar.tsx",
+          "frontend/src/components/layout/UserNavbar.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/user/MarketplacePage.tsx",
+          "frontend/src/pages/user/ProductDetailPage.tsx",
+          "frontend/src/pages/public/BrowseProductsPublicPage.tsx",
+          "frontend/src/pages/public/LandingPage.tsx",
+          "frontend/src/components/layout/AuthenticatedNavbar.tsx",
+          "frontend/src/components/layout/UserNavbar.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/components/checkout/CheckoutIntentDialog.tsx",
+    "frontend/src/components/checkout/PaymentDetailsPanel.tsx",
+    "frontend/src/components/donations/DonationBudgetPlanner.tsx",
+    "frontend/src/components/layout/AuthenticatedNavbar.tsx",
+    "frontend/src/components/layout/NGONavbar.tsx",
+    "frontend/src/components/layout/UserNavbar.tsx",
+    "frontend/src/components/marketplace/SellerRating.tsx",
+    "frontend/src/components/marketplace/SellerReviewSummary.tsx",
+    "frontend/src/components/public/TestimonialsSection.tsx",
+    "frontend/src/index.css",
+    "frontend/src/pages/admin/ReportsAnalyticsPage.tsx",
+    "frontend/src/pages/ngo/ImpactAnalyticsPage.tsx",
+    "frontend/src/pages/ngo/NGODeliveryTrackingPage.tsx",
+    "frontend/src/pages/public/BrowseProductsPublicPage.tsx",
+    "frontend/src/pages/public/LandingPage.tsx",
+    "frontend/src/pages/user/DonateNeedBoardPage.tsx",
+    "frontend/src/pages/user/DonatePaymentPage.tsx",
+    "frontend/src/pages/user/MarketplacePage.tsx",
+    "frontend/src/pages/user/ProductDetailPage.tsx",
+    "frontend/src/pages/user/UserDeliveriesPage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}
