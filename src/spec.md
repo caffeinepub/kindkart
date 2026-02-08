@@ -1,19 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Refresh and complete the KindKart frontend UX by standardizing marketplace terminology, fixing NGO navigation 404s, adding delivery status and tracking access, enhancing trust signals (testimonials + seller ratings), and improving donation/buy checkout flows with clear payment details and richer dummy data.
+**Goal:** Ensure the Messages drawer is populated with at least one dummy conversation (and message) for every authenticated role, and never appears empty.
 
 **Planned changes:**
-- Rename marketplace UI language from “Products” to “Necessity Items” across relevant pages/components while keeping routes unchanged.
-- Fix NGO navbar links so “Post Requirements” and “Delivery Tracking” route to the existing paths and no longer hit Not Found.
-- Add a user-facing Delivery section that lists deliveries with statuses (dummy/seeded data) and links into the existing tracking details route by trackingId.
-- Add a public testimonials section (at least 4 entries) including name, role/type, short quote, and a visible rating.
-- Add seller authenticity star ratings + review counts to marketplace listings and ensure consistent seller rating display on item detail pages, including a short review summary/list (dummy data).
-- Ensure every marketplace item detail page shows a clear description section, with a sensible fallback when missing.
-- Add a donor budget UI that lets users set a budget and shows recommended donation necessity items that update client-side (UI-only, dummy data).
-- Update checkout initiation from item detail to offer “Buy for yourself” vs “Donate”; if Donate, require choosing “Donate anonymously” vs “Show my name,” and reflect it in confirmation/summary.
-- Add coherent payment details panels for both buying and donating flows (breakdown + payer/donor details; dummy values).
-- Populate dashboards/analytics and delivery/map-related UIs with realistic dummy datasets so primary views don’t look empty, including dummy route/markers where maps are shown.
-- Apply a cohesive warm/neutral visual theme refresh (avoid blue/purple) across the newly added/modified UI sections with consistent typography, spacing, and components.
+- Normalize session role values (User, NGO, DeliveryPartner, Admin) to match the values expected by the existing chat seeding logic so dummy threads seed reliably for all roles.
+- Ensure each role is seeded with at least one dummy thread containing at least one message, including at least one unread message so the badge count can be > 0 when applicable.
+- Add a safe UI fallback in the Messages drawer: if the thread list is empty for any reason, show a dummy “welcome” conversation preview (participant name, last message, timestamp) instead of a blank/empty area.
 
-**User-visible outcome:** Users see “Necessity Items” throughout the marketplace, can view delivery status lists and open tracking details, read testimonials, evaluate sellers via ratings/reviews, always see item descriptions, set a donation budget to browse recommended items, and complete buy/donate flows with anonymity choice and clear payment breakdowns—while NGO navigation no longer leads to Not Found and dashboards show meaningful dummy data.
+**User-visible outcome:** When logged in as any role, opening the Messages drawer shows a non-empty conversation list (or a placeholder preview if something goes wrong), and the message icon always renders with an unread badge when unread seeded messages exist.

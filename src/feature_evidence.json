@@ -2,15 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-rename-retitle-marketplace-language-across-the-ui-from-generic-products-to-necessity-items-including-headings-buttons-empty-states-and-navigation-labels-while-keeping-existing-routes-intact",
-      "featureTitle": "Rename/retitle marketplace language across the UI from generic 'Products' to 'Necessity Items' (including headings, buttons, empty states, and navigation labels) while keeping existing routes intact.",
+      "featureId": "feature-fix-chat-seeding-so-the-message-drawer-is-not-empty-for-any-authenticated-role-user-ngo-deliverypartner-admin-by-normalizing-the-session-role-values-to-the-values-expected-by-the-chat-seeding-logic-and-ensure-each-role-has-at-least-one-dummy-thread-with-at-least-one-message",
+      "featureTitle": "Fix chat seeding so the message drawer is not empty for any authenticated role (User, NGO, DeliveryPartner, Admin) by normalizing the session role values to the values expected by the chat seeding logic, and ensure each role has at least one dummy thread with at least one message.",
       "files": [
-        "frontend/src/components/layout/AuthenticatedNavbar.tsx",
-        "frontend/src/components/layout/UserNavbar.tsx",
-        "frontend/src/pages/public/BrowseProductsPublicPage.tsx",
-        "frontend/src/pages/public/LandingPage.tsx",
-        "frontend/src/pages/user/MarketplacePage.tsx",
-        "frontend/src/pages/user/ProductDetailPage.tsx"
+        "frontend/src/state/ChatContext.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -23,15 +18,15 @@
         "user-approval@3.0.0"
       ],
       "testIds": [
-        "REQ-9"
+        "REQ-1"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-fix-ngo-section-navigation-so-clicking-post-requirements-and-delivery-tracking-does-not-show-not-found-by-updating-ngo-navbar-links-to-match-existing-routes-in-the-router",
-      "featureTitle": "Fix NGO section navigation so clicking 'Post Requirements' and 'Delivery Tracking' does not show 'Not Found' by updating NGO navbar links to match existing routes in the router.",
+      "featureId": "feature-add-a-safe-ui-fallback-in-the-chat-drawer-so-that-if-threads-are-empty-for-any-reason-the-drawer-displays-a-dummy-welcome-conversation-preview-participant-name-last-message-timestamp-instead-of-an-empty-state",
+      "featureTitle": "Add a safe UI fallback in the chat drawer so that if threads are empty for any reason, the drawer displays a dummy welcome conversation preview (participant name, last message, timestamp) instead of an empty state.",
       "files": [
-        "frontend/src/components/layout/NGONavbar.tsx"
+        "frontend/src/state/ChatContext.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -44,215 +39,7 @@
         "user-approval@3.0.0"
       ],
       "testIds": [
-        "REQ-10"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-a-delivery-section-for-end-users-that-shows-delivery-status-and-allows-navigating-to-a-detailed-tracking-view-using-an-existing-trackingid-based-route",
-      "featureTitle": "Add a 'Delivery' section for end users that shows delivery status and allows navigating to a detailed tracking view using an existing trackingId-based route.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/layout/UserNavbar.tsx",
-        "frontend/src/pages/user/UserDeliveriesPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "blob-storage@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "user-approval@3.0.0"
-      ],
-      "testIds": [
-        "REQ-11"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-a-testimonials-section-to-the-public-website-with-multiple-dummy-testimonials-name-role-type-short-quote-and-a-rating-and-render-it-in-a-prominent-public-location-e-g-landing-page",
-      "featureTitle": "Add a testimonials section to the public website with multiple dummy testimonials (name, role/type, short quote, and a rating) and render it in a prominent public location (e.g., Landing page).",
-      "files": [
-        "frontend/src/components/public/TestimonialsSection.tsx",
-        "frontend/src/pages/public/LandingPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "blob-storage@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "user-approval@3.0.0"
-      ],
-      "testIds": [
-        "REQ-12"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-seller-authenticity-star-ratings-and-review-summaries-to-marketplace-listings-and-product-detail-views-using-dummy-data-and-ensure-the-ratings-are-consistently-displayed-wherever-seller-info-is-shown",
-      "featureTitle": "Add seller authenticity star ratings and review summaries to marketplace listings and product detail views using dummy data, and ensure the ratings are consistently displayed wherever seller info is shown.",
-      "files": [
-        "frontend/src/components/marketplace/SellerRating.tsx",
-        "frontend/src/components/marketplace/SellerReviewSummary.tsx",
-        "frontend/src/pages/user/MarketplacePage.tsx",
-        "frontend/src/pages/user/ProductDetailPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "blob-storage@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "user-approval@3.0.0"
-      ],
-      "testIds": [
-        "REQ-13"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-ensure-that-opening-a-marketplace-item-shows-a-clear-readable-description-section-on-the-product-detail-page-and-handle-missing-descriptions-gracefully-with-a-sensible-dummy-fallback",
-      "featureTitle": "Ensure that opening a marketplace item shows a clear, readable description section on the product detail page (and handle missing descriptions gracefully with a sensible dummy fallback).",
-      "files": [
-        "frontend/src/pages/user/ProductDetailPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "blob-storage@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "user-approval@3.0.0"
-      ],
-      "testIds": [
-        "REQ-14"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-a-donation-budgeting-ui-for-donors-allow-the-donor-to-set-a-budget-and-based-on-that-budget-show-recommended-donation-necessity-items-ui-only-no-backend-logic-required",
-      "featureTitle": "Add a donation budgeting UI for donors: allow the donor to set a budget, and based on that budget show recommended donation necessity items (UI only; no backend logic required).",
-      "files": [
-        "frontend/src/components/donations/DonationBudgetPlanner.tsx",
-        "frontend/src/pages/user/DonateNeedBoardPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "blob-storage@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "user-approval@3.0.0"
-      ],
-      "testIds": [
-        "REQ-15"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-the-marketplace-item-checkout-flow-so-that-when-a-user-initiates-purchase-from-a-product-detail-page-the-ui-offers-1-buy-for-yourself-or-2-donate-if-donate-is-selected-prompt-for-donate-anonymously-vs-show-my-name",
-      "featureTitle": "Update the marketplace item checkout flow so that when a user initiates purchase from a product detail page, the UI offers: (1) Buy for yourself, or (2) Donate; if Donate is selected, prompt for 'Donate anonymously' vs 'Show my name'.",
-      "files": [
-        "frontend/src/components/checkout/CheckoutIntentDialog.tsx",
-        "frontend/src/pages/user/ProductDetailPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "blob-storage@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "user-approval@3.0.0"
-      ],
-      "testIds": [
-        "REQ-16"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-show-payment-details-during-both-buying-and-donating-flows-including-a-clear-cost-breakdown-item-price-donation-amount-fees-if-any-as-dummy-values-total-and-payer-donor-details-including-anonymity-selection-when-applicable",
-      "featureTitle": "Show payment details during both buying and donating flows, including a clear cost breakdown (item price/donation amount, fees if any as dummy values, total), and payer/donor details (including anonymity selection when applicable).",
-      "files": [
-        "frontend/src/components/checkout/CheckoutIntentDialog.tsx",
-        "frontend/src/components/checkout/PaymentDetailsPanel.tsx",
-        "frontend/src/pages/user/DonatePaymentPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "blob-storage@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "user-approval@3.0.0"
-      ],
-      "testIds": [
-        "REQ-17"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-populate-all-relevant-pages-sections-with-realistic-dummy-data-maps-charts-analytics-tables-and-lists-so-that-dashboards-and-analytics-views-do-not-appear-empty-or-placeholder-only",
-      "featureTitle": "Populate all relevant pages/sections with realistic dummy data (maps, charts, analytics, tables, and lists) so that dashboards and analytics views do not appear empty or placeholder-only.",
-      "files": [
-        "frontend/src/pages/admin/ReportsAnalyticsPage.tsx",
-        "frontend/src/pages/ngo/ImpactAnalyticsPage.tsx",
-        "frontend/src/pages/ngo/NGODeliveryTrackingPage.tsx",
-        "frontend/src/pages/user/UserDeliveriesPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "blob-storage@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "user-approval@3.0.0"
-      ],
-      "testIds": [
-        "REQ-18"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-apply-a-cohesive-visual-theme-refresh-across-newly-added-modified-sections-testimonials-ratings-delivery-status-checkout-payment-panels-donation-budget-ui-with-consistent-typography-spacing-and-a-warm-trustworthy-palette-avoid-blue-purple",
-      "featureTitle": "Apply a cohesive visual theme refresh across newly added/modified sections (testimonials, ratings, delivery status, checkout/payment panels, donation budget UI) with consistent typography, spacing, and a warm, trustworthy palette (avoid blue/purple).",
-      "files": [
-        "frontend/src/index.css",
-        "frontend/src/pages/admin/ReportsAnalyticsPage.tsx",
-        "frontend/src/pages/public/LandingPage.tsx",
-        "frontend/src/pages/user/DonateNeedBoardPage.tsx",
-        "frontend/src/pages/user/DonatePaymentPage.tsx",
-        "frontend/src/pages/user/MarketplacePage.tsx",
-        "frontend/src/pages/user/ProductDetailPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "blob-storage@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "user-approval@3.0.0"
-      ],
-      "testIds": [
-        "REQ-19"
+        "REQ-2"
       ],
       "confidence": "high"
     }

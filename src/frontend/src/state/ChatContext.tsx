@@ -32,7 +32,10 @@ const ChatContext = createContext<ChatContextType | undefined>(undefined);
 function generateSeededThreads(role: string): ChatThread[] {
   const baseTime = Date.now();
   
-  if (role === 'user') {
+  // Normalize role to lowercase for comparison
+  const normalizedRole = role.toLowerCase();
+  
+  if (normalizedRole === 'user') {
     return [
       {
         id: 'thread-1',
@@ -76,7 +79,7 @@ function generateSeededThreads(role: string): ChatThread[] {
         ],
       },
     ];
-  } else if (role === 'ngo') {
+  } else if (normalizedRole === 'ngo') {
     return [
       {
         id: 'thread-1',
@@ -113,7 +116,7 @@ function generateSeededThreads(role: string): ChatThread[] {
         ],
       },
     ];
-  } else if (role === 'delivery') {
+  } else if (normalizedRole === 'deliverypartner') {
     return [
       {
         id: 'thread-1',
@@ -150,7 +153,7 @@ function generateSeededThreads(role: string): ChatThread[] {
         ],
       },
     ];
-  } else if (role === 'admin') {
+  } else if (normalizedRole === 'admin') {
     return [
       {
         id: 'thread-1',
@@ -216,8 +219,22 @@ export function ChatProvider({ children }: { children: ReactNode }) {
       isOwn: true,
     };
 
-    setThreads((prev) =>
-      prev.map((thread) => {
+    setThreads((prev) => {
+      // If no threads exist, create a new one
+      if (prev.length === 0) {
+        const newThread: ChatThread = {
+          id: threadId || 'thread-new',
+          participantName: 'New Conversation',
+          participantId: 'new-participant',
+          lastMessage: content,
+          lastMessageTime: newMessage.timestamp,
+          unread: 0,
+          messages: [newMessage],
+        };
+        return [newThread];
+      }
+
+      return prev.map((thread) => {
         if (thread.id === threadId) {
           const updatedMessages = [...thread.messages, newMessage];
           
@@ -254,8 +271,8 @@ export function ChatProvider({ children }: { children: ReactNode }) {
           };
         }
         return thread;
-      })
-    );
+      });
+    });
   };
 
   const markAsRead = (threadId: string) => {

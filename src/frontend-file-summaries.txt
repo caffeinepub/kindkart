@@ -69,5 +69,6 @@
   "frontend/src/components/checkout/PaymentDetailsPanel.tsx": "Reusable payment details panel showing cost breakdown, fees, and buyer/donor information with anonymity handling.",
   "frontend/src/components/donations/DonationBudgetPlanner.tsx": "Budget planner component that filters and displays recommended necessity items based on user-entered budget amount.",
   "frontend/src/pages/user/UserDeliveriesPage.tsx": "User deliveries page listing all deliveries with status badges, addresses, ETAs, and tracking links using the correct proofUrl property from Delivery type.",
-  "frontend/src/App.tsx": "Main application component with complete routing including new user deliveries route at /user/deliveries."
+  "frontend/src/App.tsx": "Main application component with complete routing including new user deliveries route at /user/deliveries.",
+  "frontend/src/state/ChatContext.tsx": "Chat context provider managing message threads and conversations with role-based seeded dummy data, now correctly normalizing SessionContext role values (User/NGO/DeliveryPartner/Admin) to match seeding logic and ensuring sendMessage can create threads when starting from empty state."
 }
